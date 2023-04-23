@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
 
-function App() {
+const App: React.FC = () => {
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch('https://static.ui.com/fingerprint/ui/public.json');
+        const data = await response.json();
+        const obj = data.devices[0];
+        const properties: string[] = Object.keys(obj);
+        console.log(properties);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    /* 9 property names in object: 0. sysids 1. icon 2. line 3. guids 4. 
+  uisp 5. id 6. product 7. shortnames 8. triplets */
+
+    fetchData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* components */}
     </div>
   );
 }
