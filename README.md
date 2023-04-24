@@ -1,46 +1,66 @@
-# Getting Started with Create React App
+# json file used: https://static.ui.com/fingerprint/ui/public.json
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+***
+# JSON file Fetch Unfinished Chart
 
-## Available Scripts
+# Property Name Chart (entries)   # Actual Property value
 
-In the project directory, you can run:
+0. "sysids"                       NA
 
-### `npm start`
+1. "icon"                         device id/resolution !how you access individual product pictures
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2. "line"                         name/id !For Filtering Devices EX: Product line: Object { name: "UniFi Protect", id: "unifi-protect" }
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+3. "guids"                        array
 
-### `npm test`
+4. "uisp"                         NA
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5. "id"                           NA
 
-### `npm run build`
+6. "product"                      abbrev/name !Name for each product, use in combo with 2. line id/name EX:  Object { abbrev: "USP PDU Pro", name: "SmartPower PDU Pro" }
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+7. "shortnames"                   Array EX: Array(3) [ "UDM-PRO", "UDM-Pro", "UDMPRO" ]
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+8. "triplets"                     NA
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+9. "sysid"                        NA
 
-### `npm run eject`
+10. "btle"                        factoryDefault userConfigured
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+11. "jrf"                         NA
+12. "jpa"                         NA
+13. "unifi"                       holds numberOfPorts,ethernetMaxSpeedMegabitsPerSecond, capacity (power) 
+14. "fcc"                         Compliant
+15. "ic"                          Compliant
+16. "is_service"                  NA
+17. "deviceType"                  
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Product Page or Devices/ Open  
+* icon (1)                          
+* Product Line (2)
+* ID (2)
+* Name (6)
+* Short Name (7)
+** If applicable
+* Max. Power(13)
+* Speed (13)
+* Number of ports (13)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Devices List
+* icon (1)  
+* Product Line (2)
+* ID (2)
+* Name (6)
+and number of results *
 
-## Learn More
+# Devices Grid
+* icon (1)
+* Product Line (2)
+* ID (2)
+* Name (6)
+and number of results *
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# filter menu
+* Product Line (2)
+Could add icon (1) for more personalized searching or more filters *
