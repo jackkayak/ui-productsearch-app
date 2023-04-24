@@ -1,29 +1,17 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
+import fetchData from './fetchData';
+import ProductList from './components/ProductList';
 
+// calls fetch function to access property names in json file
 const App: React.FC = () => {
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch('https://static.ui.com/fingerprint/ui/public.json');
-        const data = await response.json();
-        const propertyNames = new Set<string>();
-        data.devices.forEach((device: {[key: string]: any}) => {
-          console.log(device); // log each device object to console
-          Object.keys(device).forEach((key) => propertyNames.add(key));
-        });
-        console.log(propertyNames);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    fetchData();
+   useEffect(() => {
+     fetchData();
   }, []);
 
   return (
     <div>
-      {/* components */}
+      <h1>Search for your product</h1>
+      <ProductList />
     </div>
   );
 }
