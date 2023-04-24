@@ -1,32 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import getProducts, { Product } from '../Api/deviceAPI';
+import React from 'react';
+import { Device } from '../fetchData';
 
-const ProductList: React.FC = () => {
-  const [products, setProducts] = useState<Array<Product>>([]);
+interface Props {
+  devices: Array<Device>;
+}
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const data = await getProducts();
-      setProducts(data.sort((a: Product, b: Product) => b.name.localeCompare(a.name)));
-    };
-    fetchProducts();
-  }, []);
-
+const ProductList: React.FC<Props> = ({ devices }) => {
   return (
     <div className="bg-gray-100 min-h-screen">
       <div className="container mx-auto py-10">
         <h1 className="text-4xl font-bold mb-10">Search for your product</h1>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {products.map((product) => (
-            <div key={product.id} className="bg-white shadow-lg rounded-lg overflow-hidden">
-              <img src={product.image} alt={product.name} className="h-48 w-full object-cover" />
-              <div className="py-5 px-6">
-                <h2 className="text-2xl font-bold mb-2">{product.name}</h2>
-                <p className="text-gray-800">{product.model}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <table className="w-full border-collapse">
+          <thead>
+            <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+              <th className="py-1 px-2 text-left">Product Icon</th>
+              <th className="py-1 px-2 text-left">Product Line</th>
+              <th className="py-1 px-2 text-left">Product Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {devices.map((device) => (
+              <tr key={device.id} className="hover:bg-gray-100 border-b border-gray-200 py-10">
+                <td className="py-1 px-2 text-left whitespace-nowrap">
+                <img src={`https://static.ui.com/fingerprint/ui/icons/${device.iconId}_${device.resolutions[0][0]}x${device.resolutions[0][0]}.png`} alt={device.name} className="object-contain" />
+                  </td>
+                <td className="py-1 px-2 bold text-left">{device.lineName}</td>
+                <td className="py-1 px-2 text-left">
+                {device.product} </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
