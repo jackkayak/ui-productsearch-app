@@ -34,4 +34,6 @@ async function fetchData(): Promise<Array<Device>> {
   return devices;
 }
 
+
+
 export default fetchData;
