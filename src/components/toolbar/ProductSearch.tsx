@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Device } from '../../fetchData';
+import SearchIcon from '../../assets/Search-icon.svg'
+import CloseIcon from '../../assets/Close-icon.svg'
 
 type ProductSearchProps = {
   devices: Array<Device>;
@@ -33,17 +35,35 @@ const ProductSearch: React.FC<ProductSearchProps> = ({ devices, onSearch }) => {
     onSearch(results);
   };
   
+  const handleClear = () => {
+    setQuery('');
+    onSearch(devices);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  // https://css-tricks.com/almanac/properties/c/caret-color/
 
   return (
-    <div className="my-4">
+    <div className="my-2 flex items-center bg-gray-100 rounded-lg py-1" style={{ width: '344px', marginLeft: '32px' }}>
+      <img src={SearchIcon} alt="Search" className="ml-2" />
       <input
         type="text"
-        placeholder="Search products..."
-        className="p-2 border border-gray-300 rounded-lg mr-2"
+        placeholder="Search "
+        className="py-1 pl-1 flex-grow bg-transparent outline-none " style={{caretColor: '#006FFF'}}
         value={query}
         onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
       />
-      <button onClick={handleSearch}>Search</button>
+      {query && (
+        <button onClick={handleClear} className="mx-2 focus:outline-none">
+          <img src={CloseIcon} alt="Clear" />
+        </button>
+      )}
     </div>
   );
 };

@@ -9,7 +9,7 @@ type ToolBarProps = {
 
 const ToolBar: React.FC<ToolBarProps> = ({ devices, onSearch }) => {
   return (
-    <div>
+    <div className='border border-t-[#F6F6F8] border-b-[#F6F6F8]'>
       <ProductSearch devices={devices} onSearch={onSearch} />
     </div>
   );

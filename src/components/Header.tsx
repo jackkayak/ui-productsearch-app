@@ -3,7 +3,7 @@ import UIlogo from '../assets/Ubiquiti_logo.svg'
 
 const Header: React.FC = () => {
   return (
-    <div className=" bg-[#F6F6F8]">
+    <div className=" bg-[#F6F6F8] ">
       <div className=" mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <img

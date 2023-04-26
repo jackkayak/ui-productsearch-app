@@ -1,5 +1,6 @@
 import React from 'react';
 import { Device } from '../fetchData';
+import ProductCount from './ProductCount';
 
 interface Props {
   devices: Array<Device>;
@@ -8,13 +9,15 @@ interface Props {
 const ProductList: React.FC<Props> = ({ devices }) => {
   return (
     <div className="bg-white min-h-screen">
-      <div className=" ml-5 mr-6 py-10">
+      <div className=" ml-20 mr-12 py-10">
         
         <div className="chart-container" style={{ height: "80vh", overflowY: "scroll",overflowX: "hidden", marginBottom: "5rem", width:"100%", marginTop: "23px" }}>
           <table className="w-full border-collapse">
             <thead>
               <tr className=" .black-65 font-bold uppercase text-sm leading-normal">
-                <th className="py-1 text-left">Product Icon</th>
+                <th className="py-1 pl-4 font-normal text-[#BDBDBD] lowercase">
+                <ProductCount count={devices.length} />
+                </th>
                 <th className="py-1 text-left">Product Line</th>
                 <th className="py-1 text-left" style={{ paddingRight: "871px" }}>Name</th>
               </tr>
