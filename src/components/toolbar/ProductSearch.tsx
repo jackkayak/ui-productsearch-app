@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Device } from '../../fetchData';
 
 type ProductSearchProps = {
-  onSearch: (query: string) => void;
+  devices: Array<Device>;
+  onSearch: (results: Array<Device>) => void;
 };
 
-const ProductSearch: React.FC<ProductSearchProps> = ({ onSearch }) => {
+const ProductSearch: React.FC<ProductSearchProps> = ({ devices, onSearch }) => {
   const [query, setQuery] = useState('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,7 +14,15 @@ const ProductSearch: React.FC<ProductSearchProps> = ({ onSearch }) => {
   };
 
   const handleSearch = () => {
-    onSearch(query);
+    const results = devices.filter(
+      (device) =>
+        device.id.includes(query) ||
+        device.name.toLowerCase().includes(query.toLowerCase()) ||
+        device.iconId.includes(query) ||
+        device.lineName.toLowerCase().includes(query.toLowerCase()) ||
+        device.product.toLowerCase().includes(query.toLowerCase())
+    );
+    onSearch(results);
   };
 
   return (
@@ -24,9 +34,7 @@ const ProductSearch: React.FC<ProductSearchProps> = ({ onSearch }) => {
         value={query}
         onChange={handleInputChange}
       />
-      <button onClick={handleSearch}>
-        Search
-      </button>
+      <button onClick={handleSearch}>Search</button>
     </div>
   );
 };
