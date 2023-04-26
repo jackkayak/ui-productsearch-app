@@ -1,42 +1,32 @@
 import React, { useState } from 'react';
 import { Device } from '../fetchData';
-import ProductSearch from './toolbar/ProductSearch';
-import GridIcon from './../assets/Grid.svg';
-import ListIcon from './../assets/List.svg';
 
-type Props = {
-  devices: Device[];
+type ProductSearchProps = {
+  devices: Array<Device>;
+  onSearch: (results: Array<Device>) => void;
 };
 
-const ToolBar: React.FC<Props> = ({ devices }) => {
-  const [view, setView] = useState<'list' | 'grid'>('list');
-  const [filteredDevices, setFilteredDevices] = useState<Device[]>(devices);
+const ToolBar: React.FC<ProductSearchProps> = ({ devices, onSearch }) => {
+  const [query, setQuery] = useState('');
 
-  const handleViewChange = (view: 'list' | 'grid') => {
-    setView(view);
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
   };
 
-  const handleSearch = (results: Device[]) => {
-    setFilteredDevices(results);
+  const handleSearch = () => {
+    const results = devices.filter((device) => {
+      const lineName = device?.lineName?.toLowerCase?.();
+      const name = device?.name?.toLowerCase?.();
+      return lineName?.includes(query.toLowerCase()) || name?.includes(query.toLowerCase());
+    });
+    onSearch(results);
   };
+  
 
   return (
-    <div className="flex justify-between items-center">
-      <ProductSearch devices={devices} onSearch={handleSearch} />
-      <div>
-        <button
-          className="p-2 mr-2"
-          onClick={() => handleViewChange('list')}
-        >
-          <img src={ListIcon} alt="List View" />
-        </button>
-        <button
-          className="p-2"
-          onClick={() => handleViewChange('grid')}
-        >
-          <img src={GridIcon} alt="Grid View" />
-        </button>
-      </div>
+    <div>
+      <input type="text" placeholder="Search" value={query} onChange={handleInputChange} />
+      <button onClick={handleSearch}>Search</button>
     </div>
   );
 };

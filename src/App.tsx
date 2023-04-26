@@ -7,21 +7,27 @@ import ProductGrid from './components/ProductGrid';
 
 const App: React.FC = () => {
   const [devices, setDevices] = useState<Array<Device>>([]);
+  const [filteredDevices, setFilteredDevices] = useState<Array<Device>>([]);
 
   useEffect(() => {
     const fetchDevices = async () => {
       const data = await fetchData();
       setDevices(data);
+      setFilteredDevices(data);
     };
     fetchDevices();
   }, []);
 
+  const handleSearch = (results: Array<Device>) => {
+    setFilteredDevices(results);
+  };
+
   return (
     <div>
       <Header />
-      <Toolbar devices={devices} />
-      <ProductList devices={devices} />
-      <ProductGrid devices={devices} />
+      <Toolbar devices={devices} onSearch={handleSearch} />
+      <ProductList devices={filteredDevices} />
+      <ProductGrid devices={filteredDevices} />
     </div>
   );
 };

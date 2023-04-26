@@ -16,14 +16,12 @@ const ProductSearch: React.FC<ProductSearchProps> = ({ devices, onSearch }) => {
   const handleSearch = () => {
     const results = devices.filter(
       (device) =>
-        device.id.includes(query) ||
-        device.name.toLowerCase().includes(query.toLowerCase()) ||
-        device.iconId.includes(query) ||
         device.lineName.toLowerCase().includes(query.toLowerCase()) ||
-        device.product.toLowerCase().includes(query.toLowerCase())
+        device.name.toLowerCase().includes(query.toLowerCase())
     );
     onSearch(results);
   };
+  
 
   return (
     <div className="my-4">

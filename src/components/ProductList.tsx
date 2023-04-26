@@ -8,8 +8,8 @@ interface Props {
 const ProductList: React.FC<Props> = ({ devices }) => {
   return (
     <div className="bg-white min-h-screen">
-      <div className="container ml-5 py-10">
-        <h1 className="text-4xl font-bold mb-10">Search for your product</h1>
+      <div className=" ml-5 mr-6 py-10">
+        
         <div className="chart-container" style={{ height: "80vh", overflowY: "scroll",overflowX: "hidden", marginBottom: "5rem", width:"100%", marginTop: "23px" }}>
           <table className="w-full border-collapse">
             <thead>

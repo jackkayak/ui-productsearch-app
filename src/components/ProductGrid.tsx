@@ -8,7 +8,7 @@ interface Props {
 const ProductList: React.FC<Props> = ({ devices }) => {
   return (
     <div className="bg-white  max-w-full min-h-screen">
-      <div className="container mx-auto py-10 px-4 sm:px-6 lg:px-8">
+      <div className=" mx-auto py-10 px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold mb-10">Search for your product</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {devices.map((device) => (
