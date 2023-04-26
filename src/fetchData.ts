@@ -35,5 +35,4 @@ async function fetchData(): Promise<Array<Device>> {
 }
 
 
-
 export default fetchData;
