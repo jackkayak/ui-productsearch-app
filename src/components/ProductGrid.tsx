@@ -22,7 +22,7 @@ const ProductList: React.FC<Props> = ({ devices }) => {
                 className="object-contain bg-[#F6F6F8] w-full h-40 sm:h-56"
               />
               <div className="p-4">
-                <p className="text-[16px] capitalize font-bold black-65">{device.product}</p>
+                <p className="text-[14px] capitalize font-normal black-65">{device.product}</p>
                 <p className="black-45 text-[12px] font-normal ">{device.lineName}</p>
               </div>
             </div>

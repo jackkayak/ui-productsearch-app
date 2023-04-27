@@ -18,8 +18,8 @@ const ProductList: React.FC<Props> = ({ devices }) => {
                 <th className="py-1 font-normal text-[#BDBDBD] lowercase">
                 <ProductCount count={devices.length} />
                 </th>
-                <th className="py-1 text-left">Product Line</th>
-                <th className="py-1 text-left" style={{ paddingRight: "871px" }}>Name</th>
+                <th className="py-1 text-left ">Product Line</th>
+                <th className="py-1 text-left " style={{ paddingRight: "871px" }}>Name</th>
               </tr>
             </thead>
             <tbody className='black-65 font-normal'>
