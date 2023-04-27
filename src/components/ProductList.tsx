@@ -14,15 +14,15 @@ const ProductList: React.FC<Props> = ({ devices }) => {
         <div className="chart-container" style={{ height: "80vh", overflowY: "scroll",overflowX: "hidden", marginBottom: "5rem", width:"100%", marginTop: "23px" }}>
           <table className="w-full border-collapse">
             <thead>
-              <tr className=" .black-65 font-bold uppercase text-sm leading-normal">
-                <th className="py-1 pl-4 font-normal text-[#BDBDBD] lowercase">
+              <tr className=" black-65 font-bold uppercase text-sm leading-normal">
+                <th className="py-1 font-normal text-[#BDBDBD] lowercase">
                 <ProductCount count={devices.length} />
                 </th>
                 <th className="py-1 text-left">Product Line</th>
                 <th className="py-1 text-left" style={{ paddingRight: "871px" }}>Name</th>
               </tr>
             </thead>
-            <tbody className='.black-45 font-normal'>
+            <tbody className='black-65 font-normal'>
               {devices.map((device) => (
                 <tr key={device.id} className="hover:bg-gray-100 hover:text-color-[#006FF] border-b border-gray-200 py-10">
                   <td className="py-1 pl-4 text-left whitespace-nowrap">

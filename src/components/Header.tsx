@@ -11,7 +11,7 @@ const Header: React.FC = () => {
             alt="Logo"
             className="h-12 w-auto"
           />
-          <h1 className="text-xl font-normal ml-2">Devices</h1>
+          <h1 className="text-xl text-[#838691] font-normal ml-2">Devices</h1>
         </div>
         <p className="text-sm font-medium mr-2">Frontend dev: Jack Kay</p>
       </div>
