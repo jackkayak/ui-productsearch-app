@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import fetchData, { Device } from './fetchData';
 import Header from './components/Header';
 import Toolbar from './components/ToolBar';
 import ProductList from './components/ProductList';
 import ProductGrid from './components/ProductGrid';
+import ProductPage from './components/ProductPage';
 import { ViewMode } from './components/toolbar/Selector';
 
 const App: React.FC = () => {
@@ -51,25 +53,46 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
-      <Header />
-      <Toolbar
-        devices={devices}
-        onSearch={handleSearch}
-        onViewModeToggle={onViewModeToggle}
-        productLines={devices.map((device) => device.lineName)}
-        activeViewMode={activeViewMode}
-        selectedProductLines={selectedProductLines}
-        onProductLineToggle={handleProductLineToggle}
-        onFilterToggle={handleFilterToggle}
-      />
-      {activeViewMode === ViewMode.Grid ? (
-        <ProductGrid devices={filteredDevices} />
-      ) : (
-        <ProductList devices={filteredDevices} />
-      )}
-    </div>
+    <Router>
+      <div>
+        <Header />
+        <Toolbar
+          devices={devices}
+          onSearch={handleSearch}
+          onViewModeToggle={onViewModeToggle}
+          productLines={devices.map((device) => device.lineName)}
+          activeViewMode={activeViewMode}
+          selectedProductLines={selectedProductLines}
+          onProductLineToggle={handleProductLineToggle}
+          onFilterToggle={handleFilterToggle}
+        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                {activeViewMode === ViewMode.Grid && (
+                  <ProductGrid devices={filteredDevices} />
+                )}
+                {activeViewMode === ViewMode.List && (
+                  <ProductList devices={filteredDevices} />
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/list"
+            element={<ProductList devices={filteredDevices} />}
+          />
+          <Route
+            path="/product/:id"
+            element={<ProductPage devices={devices} />}
+          />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
 export default App;
+
