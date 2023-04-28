@@ -35,8 +35,8 @@ const Filter: React.FC<FilterProps> = ({
 
  
   return (
-    <div className="relative">
-      <button className="ml-2 mr-8 black-45" onClick={toggleFilter}>
+    <div className="relative ">
+      <button className="ml-2 mr-8 black-45 transition ease-linear duration-600" onClick={toggleFilter}>
         {isFilterVisible ? (
           <img src={CloseIcon} alt="Close Icon" />
         ) : (
@@ -44,8 +44,8 @@ const Filter: React.FC<FilterProps> = ({
         )}
       </button>
       {isFilterVisible && (
-        <div className="absolute top-0 right-0 -mt-6 -mr-2 bg-white shadow-md rounded-md w-64 py-2 z-10">
-          <div className="flex items-center justify-between px-4 py-5 border-b-2 border-b-[#F6F6F8]">
+        <div className="absolute top-0 right-0 -mt-6 -mr-2 bg-white shadow-lg w-64 pt-2 pb-[32px] z-10 ">
+          <div className="flex items-center justify-between px-4 py-[22px] border-b-2 border-b-[#F6F6F8]">
             <div className="black-65 font-normal text-[14px] ">Filter</div>
             <button onClick={toggleFilter}>
               <img src={CloseIcon} alt="Close Icon" />
