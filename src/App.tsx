@@ -85,7 +85,7 @@ const App: React.FC = () => {
             element={<ProductList devices={filteredDevices} />}
           />
           <Route
-            path="/product/:id"
+            path="/product/:productid"
             element={<ProductPage devices={devices} />}
           />
         </Routes>

@@ -1,5 +1,20 @@
 # json file used: https://static.ui.com/fingerprint/ui/public.json
 
+Before I forget: 
+Update more prop values adding to the fetch then over to the product page.
+Use a condition that tracks if product page is open to then show new toolbar, otherwise regular toolbar.
+Ensure that the back button works.
+If results = none, currently it goes blank and user can only refresh page to get back ontrack, need to produce a error sign with good ux to get the user on track. 
+Possibly work on mobile responsive
+Possibly make more transitions to make product smoother to use
+Run api tests to handle
+triple check css with figma file for each page
+on product page try to add sku or also add area to copy the link so employees can easily share, look up how to make button copy link. 
+Maybe make the devices or the logo clickable to bring back to list.
+
+Create Todo for another developer to drive it to the finish line. Organize readme with markdown.
+
+
 ***
 # JSON file Fetch Unfinished Chart
 
