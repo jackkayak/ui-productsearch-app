@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import backIcon from '../assets/backIcon.svg';
+import backIcon from '../assets/Back-icon.svg';
 
 interface Props {
   productName: string;
   onBackClick: () => void;
+  location?: {
+    pathname: string;
+  };
 }
 
 const ProductPageToolbar: React.FC<Props> = ({ productName, onBackClick }) => {
@@ -24,3 +27,6 @@ const ProductPageToolbar: React.FC<Props> = ({ productName, onBackClick }) => {
 };
 
 export default ProductPageToolbar;
+
+
+

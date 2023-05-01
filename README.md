@@ -2,8 +2,8 @@
 
 Before I forget: 
 Update more prop values adding to the fetch then over to the product page.
-Use a condition that tracks if product page is open to then show new toolbar, otherwise regular toolbar.
-Ensure that the back button works.
+
+
 If results = none, currently it goes blank and user can only refresh page to get back ontrack, need to produce a error sign with good ux to get the user on track. 
 Possibly work on mobile responsive
 Possibly make more transitions to make product smoother to use

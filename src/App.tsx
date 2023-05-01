@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import fetchData, { Device } from './fetchData';
 import Header from './components/Header';
-import Toolbar from './components/ToolBar';
+import ConditionalToolbar from './components/ConditionalToolbar';
 import ProductList from './components/ProductList';
 import ProductGrid from './components/ProductGrid';
 import ProductPage from './components/ProductPage';
@@ -52,19 +52,25 @@ const App: React.FC = () => {
     // Handle filter toggle
   };
 
+  const getProductById = (productId: string): Device | undefined => {
+    return devices.find((device) => device.id === productId);
+  };
+
+
   return (
     <Router>
       <div>
         <Header />
-        <Toolbar
+        <ConditionalToolbar
           devices={devices}
           onSearch={handleSearch}
           onViewModeToggle={onViewModeToggle}
-          productLines={devices.map((device) => device.lineName)}
           activeViewMode={activeViewMode}
+          productLines={devices.map((device) => device.lineName)}
           selectedProductLines={selectedProductLines}
           onProductLineToggle={handleProductLineToggle}
           onFilterToggle={handleFilterToggle}
+          getProductById={getProductById}
         />
         <Routes>
           <Route
@@ -85,7 +91,7 @@ const App: React.FC = () => {
             element={<ProductList devices={filteredDevices} />}
           />
           <Route
-            path="/product/:productid"
+            path="/product/:productid/:productName"
             element={<ProductPage devices={devices} />}
           />
         </Routes>
@@ -95,4 +101,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-

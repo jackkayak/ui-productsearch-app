@@ -10,9 +10,11 @@ interface Props {
 const ProductList: React.FC<Props> = ({ devices }) => {
   const navigate = useNavigate();
 
-  const handleRowClick = (id: string) => {
-    navigate(`/product/${id}`);
+  const handleRowClick = (id: string, productName: string) => {
+    navigate(`/product/${id}/${productName}`); // adding the product name to the url finally helped pass it to the productpagetoolbar
   };
+
+
 
   return (
     <div className="bg-white min-h-screen">
@@ -36,7 +38,7 @@ const ProductList: React.FC<Props> = ({ devices }) => {
                 <tr
                   className="hover:bg-gray-100 hover:text-color-[#006FF] border-b border-gray-200 py-10  cursor-pointer"
                   key={device.id}
-                  onClick={() => handleRowClick(device.id)}
+                  onClick={() => handleRowClick(device.id, device.product)}
                 >
                   <td className="py-1 pl-4 text-left whitespace-nowrap">
                     <img
