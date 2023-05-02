@@ -18,7 +18,7 @@ const Filter: React.FC<FilterProps> = ({
 }) => {
   const [isFilterVisible, setFilterVisible] = useState(false);
   const [selectedLines, setSelectedLines] = useState(selectedProductLines);
-  const [showAllProducts, setShowAllProducts] = useState(false);
+ const [, setShowAllProducts] = useState(false);
 
 
   const toggleFilter = () => {
