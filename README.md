@@ -1,6 +1,8 @@
 # Ubiquiti Frontend Test Assessment
 **Public JSON API Used: https://static.ui.com/fingerprint/ui/public.json **
 *To expand json file use './Api/utils' or use [this link to copy and paste file online](https://jsonformatter.curiousconcept.com/#)*
+*Some components where I had to override defaults may appear different on different browsers*
+**Netlify:** https://enchanting-beignet-b9477d.netlify.app/  
 
 ## Functionality
 The app is fully-functional, The search takes in an employee's search query, the filter on the right points employees to the type of item they are looking for,
