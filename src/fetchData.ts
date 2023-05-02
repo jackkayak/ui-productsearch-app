@@ -16,7 +16,11 @@ export interface Device {
 }
 
 async function fetchData(): Promise<Array<Device>> {
+try {
   const response = await fetch('https://static.ui.com/fingerprint/ui/public.json');
+  if (!response.ok) {
+    throw new Error('Failed to fetch data from the API');
+  }
   const data = await response.json();
   const devices: Array<Device> = [];
   data.devices.forEach((device: {[key: string]: any}) => {
@@ -38,15 +42,19 @@ async function fetchData(): Promise<Array<Device>> {
 
   console.log(devices);
 
-  // Log all devices
+  /* Log all devices
   function logDevices() {
     devices.forEach((device: Device) => {
       console.log(device);
     });
   }
-  logDevices();
+  logDevices(); */
 
   return devices;
+} catch (error) {
+  console.error('An error occurred while fetching or processing data:', error);
+  return []; // Return an empty array or handle the error in an appropriate way
+}
 }
 
 

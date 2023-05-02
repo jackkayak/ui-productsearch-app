@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { Device } from '../fetchData';
 
@@ -9,6 +9,23 @@ interface Props {
 const ProductPage: React.FC<Props> = ({ devices }) => {
   const { productid } = useParams<{ productid: string }>();
 
+  const [copied, setCopied] = useState(false);
+
+  const copyLink = () => {
+    if (!product) return;
+
+    navigator.clipboard.writeText(product.id)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => {
+          setCopied(false);
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error('Failed to copy text to clipboard:', error);
+      });
+  };
+
   // Find the device with the matching productid
   const product = devices.find((device) => device.id === productid);
 
@@ -16,15 +33,17 @@ const ProductPage: React.FC<Props> = ({ devices }) => {
     // Handle case when product is not found
     return <div>Product not found.</div>;
   }
-/* Some products dont have 257 x 257 resolution, so this is an attempt at a fallback solution. Still getting small images here and there even with 257x257, unsure of how else to troubleshoot.  */
+
   const iconUrl =
-  product.resolutions[4]
-    ? `https://static.ui.com/fingerprint/ui/icons/${product.iconId}_${product.resolutions[4][0]}x${product.resolutions[4][1]}.png`
-    : product.resolutions[3]
-    ? `https://static.ui.com/fingerprint/ui/icons/${product.iconId}_${product.resolutions[3][0]}x${product.resolutions[3][1]}.png`
-    : product.resolutions[2]
-    ? `https://static.ui.com/fingerprint/ui/icons/${product.iconId}_${product.resolutions[2][0]}x${product.resolutions[2][1]}.png`
-    : null;
+    product.resolutions[4]
+      ? `https://static.ui.com/fingerprint/ui/icons/${product.iconId}_${product.resolutions[4][0]}x${product.resolutions[4][1]}.png`
+      : product.resolutions[3]
+      ? `https://static.ui.com/fingerprint/ui/icons/${product.iconId}_${product.resolutions[3][0]}x${product.resolutions[3][1]}.png`
+      : product.resolutions[2]
+      ? `https://static.ui.com/fingerprint/ui/icons/${product.iconId}_${product.resolutions[2][0]}x${product.resolutions[2][1]}.png`
+      : null;
+
+      
 
   return (
     <div className='flex flex-col items-center pp-padding' >
@@ -76,13 +95,18 @@ const ProductPage: React.FC<Props> = ({ devices }) => {
   )}
   </tbody>
 </table>
+</div>
+  </div>
+  {copied ? (
+          <p className="btn-clicked mt-6">Copied!</p>
+        ) : (
+          <button className="flex items-center btn-primary mt-6" onClick={copyLink}>
+            {copied ? 'Copied!' : 'Copy Product ID'}
+          </button>
+        )}
+  </div>
 
-
-
-      </div>
-      </div>
-    </div>
-  );
+);
   
 };
 

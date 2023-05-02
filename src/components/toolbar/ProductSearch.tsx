@@ -15,21 +15,22 @@ const ProductSearch: React.FC<ProductSearchProps> = ({ devices, onSearch }) => {
     setQuery(event.target.value);
   };
 
-  // this function takes in the device values from the fetchData.ts file. 
-  // to add more search queries, like an SKU just plug that into the fetch and then here as well.
-  // I just don't know each json data name to justify putting another in.
+
 
   // console.log(devices)
   //console.log(results);
 
+
+// This handles search query types
   const handleSearch = () => {
     const results = devices.filter((device) => {
       const lineNameMatch = device.lineName?.toLowerCase().includes(query.toLowerCase());
       const lineIdMatch = device.lineId?.toLowerCase().includes(query.toLowerCase());
       const iconIdMatch = device.iconId?.toLowerCase().includes(query.toLowerCase());
       const productMatch = device.product?.toLowerCase().includes(query.toLowerCase());
+      const IdMatch = device.id?.toLowerCase().includes(query.toLowerCase());
   
-      return lineNameMatch || lineIdMatch || iconIdMatch || productMatch;
+      return lineNameMatch || lineIdMatch || iconIdMatch || productMatch || IdMatch;
     });
   
     onSearch(results);

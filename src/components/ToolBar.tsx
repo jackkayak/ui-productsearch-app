@@ -28,6 +28,13 @@ const ToolBar: React.FC<ToolBarProps> = ({
   selectedProductLines, 
   onProductLineToggle, 
   onFilterToggle, }) => {
+
+    const handleClearFilters = () => {
+      // Clears the selected product lines/grid back to all devices
+      onSearch(devices);
+      
+    };
+
   return (
     <div className="border-t-2 border-b-2 border-t-[#F6F6F8] border-b-[#F6F6F8] flex justify-between items-center pr-2 py-2">
       <ProductSearch devices={devices} onSearch={onSearch} />
@@ -44,12 +51,15 @@ const ToolBar: React.FC<ToolBarProps> = ({
           defaultIcon={DefaultGridIcon}
           onClick={onViewModeToggle}
         />
+
+        
       
         <Filter
         productLines={productLines}
         selectedProductLines={selectedProductLines}
         onProductLineToggle={onProductLineToggle}
         onFilterToggle={onFilterToggle}
+        onClearFilters={handleClearFilters}
       />
       </div>
     </div>

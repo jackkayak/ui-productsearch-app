@@ -1,81 +1,25 @@
-# json file used: https://static.ui.com/fingerprint/ui/public.json
+# Ubiquiti Frontend Test Assessment
+**Public JSON API Used: https://static.ui.com/fingerprint/ui/public.json **
+*To expand json file use './Api/utils' or use [this link to copy and paste file online](https://jsonformatter.curiousconcept.com/#)*
 
-Before I forget: 
-Update more prop values adding to the fetch then over to the product page.
+## Functionality
+The app is fully-functional, The search takes in an employee's search query, the filter on the right points employees to the type of item they are looking for,
+the view can be switched between grid and list, each product page is individualized all including: The Product Line, The ID, The Name, and The First Shortname in the Array. There are some, mostly in the Unifi Product Line, that include other properties as well. The search can be cleared as well as the filtering to bring the employee or user back to all products. The product's ID can be quickly copied when viewing the product page. 
 
+## My Additions to the Design
+The app is very well-designed in the Figma, but as I was coding, I picked up some better UX that could be implemented, again my changes were very subtle:
+1. **The Search Close Icon**: On the Figma Design, the closing icon is constantly shown in all states of the search bar. I decided to only display the close icon when there is a query inside the search bar, which could in return, force the user to hit enter on the keyboard instead of trying to tap the magnifying glass since there were two icons in the blank state.
+2. **A clear button in the filters**: I was getting annoyed with having to click each filter off to return to all products, so I knew an employee who had to constantly use this device all day would appreciate a quick clear option. The button follows the same design as its displayed in the components frame. Like the Search Close Icon, the clear filters button only appears when there are filters checked.
+3. **Grid hovering**: Even with the cursor being set to pointer, there wasn't too much difference for a user to see what object they were about to click in the grid view. I went ahead and added some small shadowing from the tailwind docs to give the user more of a response to their movements. 
+4. **Product List Custom Scroll**: I figured in a production build that the list should be fixed to that section and now take up the full length of the page. I know the Figma Design signaled this with the padding around the list, but I also used custom css to bring in a primary scrollbar for the list, so a user could get an idea of how much they will have to scroll.
+5. **Copying the ID**: At first, I tried looking around the objects of the json file to find what could be an SKU, but was unsuccessful. I could not determine for sure if any were the SKU and I still wanted an employee to be able to share the product. Of course, they could copy and paste the url from the top, but for ease of access I implemented a way to just copy the Product ID. *The ID query is searchable within the app search component.*  
 
-If results = none, currently it goes blank and user can only refresh page to get back ontrack, need to produce a error sign with good ux to get the user on track. 
-Possibly work on mobile responsive
-Possibly make more transitions to make product smoother to use
-Run api tests to handle
-triple check css with figma file for each page
-on product page try to add sku or also add area to copy the link so employees can easily share, look up how to make button copy link. 
-Maybe make the devices or the logo clickable to bring back to list.
-
-Create Todo for another developer to drive it to the finish line. Organize readme with markdown.
-
-
-***
-# JSON file Fetch Unfinished Chart
-
-# Property Name Chart (entries)   # Actual Property value
-
-0. "sysids"                       NA
-
-1. "icon"                         device id/resolution !how you access individual product pictures
-
-2. "line"                         name/id !For Filtering Devices EX: Product line: Object { name: "UniFi Protect", id: "unifi-protect" }
-
-3. "guids"                        array
-
-4. "uisp"                         NA
-
-5. "id"                           NA
-
-6. "product"                      abbrev/name !Name for each product, use in combo with 2. line id/name EX:  Object { abbrev: "USP PDU Pro", name: "SmartPower PDU Pro" }
-
-7. "shortnames"                   Array EX: Array(3) [ "UDM-PRO", "UDM-Pro", "UDMPRO" ]
-
-8. "triplets"                     NA
-
-9. "sysid"                        NA
-
-10. "btle"                        factoryDefault userConfigured
-
-11. "jrf"                         NA
-12. "jpa"                         NA
-13. "unifi"                       holds numberOfPorts,ethernetMaxSpeedMegabitsPerSecond, capacity (power) 
-14. "fcc"                         Compliant
-15. "ic"                          Compliant
-16. "is_service"                  NA
-17. "deviceType"                  
-
-
-# Product Page or Devices/ Open  
-* icon (1)                          
-* Product Line (2)
-* ID (2)
-* Name (6)
-* Short Name (7)
-** If applicable
-* Max. Power(13)
-* Speed (13)
-* Number of ports (13)
-
-# Devices List
-* icon (1)  
-* Product Line (2)
-* ID (2)
-* Name (6)
-and number of results *
-
-# Devices Grid
-* icon (1)
-* Product Line (2)
-* ID (2)
-* Name (6)
-and number of results *
-
-# filter menu
-* Product Line (2)
-Could add icon (1) for more personalized searching or more filters *
+## Remaining Work for Next Developer
+I did my best to match the design and then some, but there are still some tasks that can be completed to really excel this application.
+1. **Mobile-friendly Design**: It should not be too difficult to turn this app into a mobile-friendly application, I was just unsure of the design of the toolbars and how the list was supposed to be formatted on mobile, so I tried to make my css and tailwindcss as easy to read as I could, in case there was a design for mobile.  [Bring me to tailwindcss docs](https://v2.tailwindcss.com/docs). 
+2. **No Search Results**: This state was not designed, but if a user does not spell a query correctly or types something random, the user is shown 0 devices and just a blank screen. There needs to be something developed here for an alert and properly guide the user to search for one of the queries. Example would be "Hey, you searched for an item we haven't gotten to. Please use the filters for guidance finding your product." 
+3. **Transitions**: I only performed a couple, but right now the app is very *To the point* everything sort of snaps to the destination instead of easing into it. The main transition would be to smooth out the filter tab toggling.
+4. **Clicking Outside the Filter to close**: I attempted to create the code for this but I was running into too many bugs, so I stopped trying. Basically, I want a user to be able to both close the filter tab by clicking the close icon as well as clicking outside of the filter's region. 
+5. **Small Icons on Product page**: I tried making a fallback option in the product page for images that didn't have 257x257 resolution, but I still noticed some that were breaking this, for example id: 67661428-a1ed-4f85-bb1f-339c1fdc70d7 . This is one of a couple of icons that I just could not get up to scale, so the next developer could either fix my fallback option or figure out why the image is displaying so small. 
+6. **Unknown**: There are currently 6 devices in the unknown product line. I did not why they were coming up as unknown, but the next developer could change that name to miscellaneous or discuss with management that would be great for the app and company. 
+7. **More Tests**: The app could always use more fallbacks for the API, as of now the fetch works great. 

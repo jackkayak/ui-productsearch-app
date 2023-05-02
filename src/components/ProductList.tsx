@@ -26,7 +26,7 @@ const ProductList: React.FC<Props> = ({ devices }) => {
           <table className="w-full border-collapse">
             <thead>
               <tr className="black-65 font-bold uppercase text-sm leading-normal">
-                <th className="py-1 font-normal text-[#BDBDBD] lowercase">
+                <th className="py-1 text-left pl-9 font-normal text-[#BDBDBD] lowercase">
                   <ProductCount count={devices.length} />
                 </th>
                 <th className="py-1 text-left">Product Line</th>
@@ -36,7 +36,7 @@ const ProductList: React.FC<Props> = ({ devices }) => {
             <tbody className="black-65 font-normal">
               {devices.map((device) => (
                 <tr
-                  className="hover:bg-gray-100 hover:text-color-[#006FF] border-b border-gray-200 py-10  cursor-pointer"
+                  className="hover:bg-[#FBFBFB] hover:text-color-[#006FF] border-b border-gray-200 py-10  cursor-pointer"
                   key={device.id}
                   onClick={() => handleRowClick(device.id, device.product)}
                 >
